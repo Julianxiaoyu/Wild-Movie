@@ -2,9 +2,12 @@
 
 namespace FrontendBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use FrontendBundle\Entity\Film;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use FrontendBundle\Entity\Film;
+use FrontendBundle\Entity\Comment;
+use Datetime;
 
 class DefaultController extends Controller
 {
@@ -56,16 +59,36 @@ class DefaultController extends Controller
 		return $this->render('FrontendBundle:Default:article.html.twig');
     }
 
-    public function showAction($id)
+    public function showAction(Request $request, $id)
     {
     	$em = $this->getDoctrine()->getManager();
         $user = $this->container->get('security.context')->getToken()->getUser();
-
         $thisMovie = $em->getRepository('FrontendBundle:Film')->findOneById($id);
+        $thisMovieid = $thisMovie->getId();
+        $listcomments = $em->getRepository('FrontendBundle:Comment')->findByIdfilm($thisMovieid);
+
+        $comment = new Comment();
+        $form = $this->createForm('FrontendBundle\Form\CommentType', $comment);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $comment->setDate(new Datetime);
+            $comment->setIdfilm($thisMovieid);
+            $comment->setName($user);
+            $em->persist($comment);
+            $em->flush();
+
+            $url = $this -> generateUrl('film_show', array( 'id'=>$thisMovieid ));
+            $response = new RedirectResponse($url);
+            return $response;
+        }
 
         return $this->render('FrontendBundle:Default:show.html.twig',
         	array(
         		'movie' => $thisMovie,
+                'form' => $form->createView(),
+                'listcomments' => $listcomments,
         ));
 
     }

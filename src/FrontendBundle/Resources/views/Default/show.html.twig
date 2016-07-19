@@ -16,9 +16,21 @@
 	<div class="col-md-10 col-md-offset-1">
 		<div class="col-md-12">
 			<h2>Commentaires : </h2>
+				{% if listcomments is defined %}	
+					{% for comment in listcomments %}
+					<div class ="commentaire">
+						<h4><b>{{ comment.title }}</b> posté le <b>{{ comment.date|date('d-m-Y') }} à {{ comment.date|date('H:i:s') }} par {{ comment.name }}
+						 <b></h4>
+						<p>{{ comment.content }}</p>
+					</div>
+					{% endfor %}
+				{% endif %}
 			<hr>
-
-			{# CODE HERE #}
+			<h2>Poster un commentaire : </h2>
+			{{ form_start(form) }}
+        		{{ form_widget(form) }}
+        		<input type="submit" value="Envoyer" />
+    		{{ form_end(form) }}
 		</div>
 	</div>
 

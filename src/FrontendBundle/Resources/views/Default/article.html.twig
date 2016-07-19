@@ -2,9 +2,47 @@
 
 {% block body %}
 
-	<h2> Télécharge cette maquette et intégre ta page ici-même.
-	Le contenu est bien entendu fictif. Ne rentre pas un article en BDD, nous te demandons juste d'intégrer la page. (Le header et le footer sont déjà présent !!!)</h2>
+<div class="container_article">
+	<h1>The "Wild", Bud Spencer, nous à quitté</h1>
 
-	<img src="{{ asset('img/image.png') }}">
+	<div class="row">	
+		<div class="col-md-8 block_left">
+			<div class="block_left_img">
+				<img src="{{ asset('img/bud.jpg') }}">
+			</div>
+			<div class="block_left_txt">
+				<p>Son physique ne passait pas inaperçu... Avec ses 192 centimètres pour 130 kilos, il s'était taillé des rôles à sa mesure dans le cinéma italien. Cet ancien nageur qui fut le premier Italien à descendre sous la minute sur 100 mètres nage libre était devenu un acteur d'abord remarqué par sa stature. Au point d'être une légende du cinéma dès la fin des années 60. Bud Spencer, l'acteur italien de westerns spaghettis, connu pour ses duos au cinéma avec Terence Hill, est mort ce lundi à Rome. Il était âgé de 86 ans. « Nous avons la grande tristesse de vous annoncer que Bud s'est envolé pour son dernier voyage », a écrit lundi soir sur son compte Twitter la famille Pedersoli, le vrai nom de l'acteur né à Naples le 31 octobre 1929.</p>
+			
+			</div>
+		</div>
+		<div class="col-md-4 block_right">
+			<div class="autre_article">
+				<div class="autre_article_photo">
+					<img src="{{ asset('img/bud.jpg') }}">
+				</div>
+				<div class="autre_article_name">
+					<p>Autre article1</p>
+				</div>
+			</div>
+			<div class="autre_article">
+				<div class="autre_article_img">
+					<img src="{{ asset('img/bud.jpg') }}">
+				</div>
+				<div class="autre_article_name">
+					<p>Autre article1</p>
+				</div>
+			</div>
+			<div class="autre_article">
+				<div class="autre_article_img">
+					<img src="{{ asset('img/bud.jpg') }}">
+				</div>
+				<div class="autre_article_name">
+					<p>Autre article1</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>
 
 {% endblock %}

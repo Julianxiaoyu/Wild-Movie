@@ -59,3 +59,53 @@
 	background-color:#04B45F;
 	padding:20px;
 }
+
+/******** Article ********/
+/*************************/
+
+.container_article{
+
+}
+.container_article h1{
+margin-left: 30px;
+margin-top: 30px;
+}
+
+.block_left{
+padding: 30px;
+}
+
+.block_right{
+padding: 30px;
+}
+
+.block_left img{
+height:400px;
+}
+
+.block_left p{
+margin-top:30px;
+font-size: 20px;
+}
+
+.autre_article{
+border: black solid 1px;
+margin-bottom:30px;
+}
+
+.autre_article img{
+height:200px;
+width: 100%;
+}
+
+.autre_article_name{
+background-color: #F1F1F1;
+padding-top:5px;
+padding-bottom:5px;
+}
+
+.autre_article_name p{
+text-align: center;
+font-size: 20px;
+margin: 0px;
+}

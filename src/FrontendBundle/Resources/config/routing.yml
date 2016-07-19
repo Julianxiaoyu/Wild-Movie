@@ -5,6 +5,7 @@ frontend_homepage:
 film_show:
     path:     /film/show/{id}
     defaults: { _controller: FrontendBundle:Default:show }
+    methods:  [GET, POST]
 
 article_show:
     path:     /article
